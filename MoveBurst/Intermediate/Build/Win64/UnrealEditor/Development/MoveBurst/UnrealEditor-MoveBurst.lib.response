@@ -1,0 +1,19 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-MoveBurst.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\MoveBurstEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurst.init.gen.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurstCharacter.gen.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurstGameMode.gen.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurst_Player.gen.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurst.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurstCharacter.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurstGameMode.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\MoveBurst_Player.cpp.obj"
+"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\Default.rc2.res"
+/OUT:"D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Intermediate\Build\Win64\UnrealEditor\Development\MoveBurst\UnrealEditor-MoveBurst.lib"

@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\moveburst.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\movebursteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\development\\moveburst\\definitions.moveburst.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

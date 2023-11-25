@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Unreal Projects\\Github\\Project_Fighter\\MoveBurst\\Source\\MoveBurst\\MoveBurst.Build.cs",
+		"D:\\Unreal Projects\\Github\\Project_Fighter\\MoveBurst\\Source\\MoveBurst.Target.cs",
+		"D:\\Unreal Projects\\Github\\Project_Fighter\\MoveBurst\\Source\\MoveBurstEditor.Target.cs"
+	],
+	"EngineVersion": "5.1.1"
+}

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MoveBurst",
+			"Path": "D:\\Unreal Projects\\Github\\Project_Fighter\\MoveBurst\\Source\\MoveBurst.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MoveBurstEditor",
+			"Path": "D:\\Unreal Projects\\Github\\Project_Fighter\\MoveBurst\\Source\\MoveBurstEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

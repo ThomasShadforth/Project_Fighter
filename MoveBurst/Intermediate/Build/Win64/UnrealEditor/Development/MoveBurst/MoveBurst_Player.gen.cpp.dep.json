@@ -1,0 +1,21 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\moveburst_player.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\movebursteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\development\\moveburst\\definitions.moveburst.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\moveburst_player.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\moveburst_player.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
