@@ -72,5 +72,11 @@
     <ClInclude Include="..\..\Source\MoveBurst\MoveBurst_Player.h">
       <Filter>Source\MoveBurst</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\MoveBurst\MoveBurst_PlayerAnimInstance.cpp">
+      <Filter>Source\MoveBurst</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MoveBurst\MoveBurst_PlayerAnimInstance.h">
+      <Filter>Source\MoveBurst</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

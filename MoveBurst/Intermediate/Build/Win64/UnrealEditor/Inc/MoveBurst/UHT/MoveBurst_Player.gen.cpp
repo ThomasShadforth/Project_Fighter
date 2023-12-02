@@ -6,12 +6,16 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "MoveBurst/MoveBurst_Player.h"
+#include "EnhancedInput/Public/EnhancedActionKeyMapping.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 // Cross Module References
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
+	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
+	ENHANCEDINPUT_API UScriptStruct* Z_Construct_UScriptStruct_FEnhancedActionKeyMapping();
 	MOVEBURST_API UClass* Z_Construct_UClass_AMoveBurst_Player();
 	MOVEBURST_API UClass* Z_Construct_UClass_AMoveBurst_Player_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_MoveBurst();
@@ -30,6 +34,46 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_playerDefaultMappingContext_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_playerDefaultMappingContext;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_moveAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_moveAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_jumpAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_jumpAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_crouchAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_crouchAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_pressRightAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_pressRightAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_pressLeftAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_pressLeftAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_releaseRightAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_releaseRightAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_releaseLeftAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_releaseLeftAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_releaseCrouchAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_releaseCrouchAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_releaseJumpAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_releaseJumpAction;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_tempSpringArm_MetaData[];
 #endif
@@ -63,6 +107,32 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_doubleJumpHeight_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_doubleJumpHeight;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_normalWalkSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_normalWalkSpeed;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_dashSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_dashSpeed;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_reverseWalkSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_reverseWalkSpeed;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCanDash_MetaData[];
+#endif
+		static void NewProp_bCanDash_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bCanDash;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_lastMoveInput_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_lastMoveInput;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bFacingRight_MetaData[];
+#endif
+		static void NewProp_bFacingRight_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bFacingRight;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -78,6 +148,86 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 		{ "ModuleRelativePath", "MoveBurst_Player.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_playerDefaultMappingContext_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_playerDefaultMappingContext = { "playerDefaultMappingContext", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, playerDefaultMappingContext), Z_Construct_UClass_UInputMappingContext_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_playerDefaultMappingContext_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_playerDefaultMappingContext_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_moveAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_moveAction = { "moveAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, moveAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_moveAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_moveAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_jumpAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_jumpAction = { "jumpAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, jumpAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_jumpAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_jumpAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_crouchAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_crouchAction = { "crouchAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, crouchAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_crouchAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_crouchAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressRightAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressRightAction = { "pressRightAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, pressRightAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressRightAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressRightAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressLeftAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressLeftAction = { "pressLeftAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, pressLeftAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressLeftAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressLeftAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseRightAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseRightAction = { "releaseRightAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, releaseRightAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseRightAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseRightAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseLeftAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseLeftAction = { "releaseLeftAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, releaseLeftAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseLeftAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseLeftAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseCrouchAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseCrouchAction = { "releaseCrouchAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, releaseCrouchAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseCrouchAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseCrouchAction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseJumpAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseJumpAction = { "releaseJumpAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, releaseJumpAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseJumpAction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseJumpAction_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_tempSpringArm_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -148,7 +298,73 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_doubleJumpHeight = { "doubleJumpHeight", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, doubleJumpHeight), METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_doubleJumpHeight_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_doubleJumpHeight_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalWalkSpeed_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalWalkSpeed = { "normalWalkSpeed", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, normalWalkSpeed), METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalWalkSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalWalkSpeed_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_dashSpeed_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_dashSpeed = { "dashSpeed", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, dashSpeed), METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_dashSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_dashSpeed_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_reverseWalkSpeed_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_reverseWalkSpeed = { "reverseWalkSpeed", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, reverseWalkSpeed), METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_reverseWalkSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_reverseWalkSpeed_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	void Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash_SetBit(void* Obj)
+	{
+		((AMoveBurst_Player*)Obj)->bCanDash = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash = { "bCanDash", nullptr, (EPropertyFlags)0x0040000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(AMoveBurst_Player), &Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_lastMoveInput_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "MoveBurst_Player" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_lastMoveInput = { "lastMoveInput", nullptr, (EPropertyFlags)0x0040008000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(AMoveBurst_Player, lastMoveInput), Z_Construct_UScriptStruct_FEnhancedActionKeyMapping, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_lastMoveInput_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_lastMoveInput_MetaData)) }; // 1165885959
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "MoveBurst_Player" },
+		{ "ModuleRelativePath", "MoveBurst_Player.h" },
+	};
+#endif
+	void Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight_SetBit(void* Obj)
+	{
+		((AMoveBurst_Player*)Obj)->bFacingRight = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight = { "bFacingRight", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(AMoveBurst_Player), &Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight_SetBit, METADATA_PARAMS(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMoveBurst_Player_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_playerDefaultMappingContext,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_moveAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_jumpAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_crouchAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressRightAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_pressLeftAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseRightAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseLeftAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseCrouchAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_releaseJumpAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_tempSpringArm,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_tempCamera,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCrouching,
@@ -157,6 +373,12 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalJumpHeight,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_highJumpHeight,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_doubleJumpHeight,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_normalWalkSpeed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_dashSpeed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_reverseWalkSpeed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bCanDash,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_lastMoveInput,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMoveBurst_Player_Statics::NewProp_bFacingRight,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AMoveBurst_Player_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AMoveBurst_Player>::IsAbstract,
@@ -195,9 +417,9 @@ void EmptyLinkFunctionForGeneratedCodeMoveBurst_Player() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_Github_Project_Fighter_MoveBurst_Source_MoveBurst_MoveBurst_Player_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AMoveBurst_Player, AMoveBurst_Player::StaticClass, TEXT("AMoveBurst_Player"), &Z_Registration_Info_UClass_AMoveBurst_Player, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMoveBurst_Player), 1647368875U) },
+		{ Z_Construct_UClass_AMoveBurst_Player, AMoveBurst_Player::StaticClass, TEXT("AMoveBurst_Player"), &Z_Registration_Info_UClass_AMoveBurst_Player, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMoveBurst_Player), 1371870265U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_Github_Project_Fighter_MoveBurst_Source_MoveBurst_MoveBurst_Player_h_2024953320(TEXT("/Script/MoveBurst"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_Github_Project_Fighter_MoveBurst_Source_MoveBurst_MoveBurst_Player_h_475977606(TEXT("/Script/MoveBurst"),
 		Z_CompiledInDeferFile_FID_Unreal_Projects_Github_Project_Fighter_MoveBurst_Source_MoveBurst_MoveBurst_Player_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_Github_Project_Fighter_MoveBurst_Source_MoveBurst_MoveBurst_Player_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
