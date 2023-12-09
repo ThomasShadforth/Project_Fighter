@@ -45,6 +45,27 @@ class MOVEBURST_API AMoveBurst_Player : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* releaseJumpAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* lightPunchAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* mediumPunchAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* heavyPunchAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* lightKickAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* mediumKickAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* heavyKickAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+		UInputAction* directionalInputAction;
+
 	//Empty action used to reset last input pressed
 	UInputAction* emptyAction;
 
@@ -59,6 +80,10 @@ protected:
 	virtual void Landed(const FHitResult& Hit) override;
 
 	void Move(const FInputActionValue& Value);
+
+	void DirectionalInput(const FInputActionValue& Value);
+
+	void ResetPreviousDirection();
 
 	void MoveForward(float value);
 
@@ -106,6 +131,13 @@ protected:
 
 	void ReenableGravity();
 
+	void ReceiveAttackInput();
+
+	void PlayAttackMontage(FName attackName);
+
+	UFUNCTION(BlueprintCallable)
+	void FinishAttackMontage();
+
 private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -141,9 +173,6 @@ private:
 	float dashSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Movement, meta = (AllowPrivateAccess = "true"))
-	float reverseWalkSpeed;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	bool bCanDash;
 
 	bool bInputEnabled;
@@ -174,7 +203,21 @@ private:
 
 	bool bCanAirDash;
 
+	bool bCanAttack;
+
 	float defaultGravityScale;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Directional Input", meta = (AllowPrivateAccess = "true"))
+	FVector2D previousInputDirection;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Directional Input", meta = (AllowPrivateAccess = "true"))
+	FVector2D currentInputDirection;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+		UAnimMontage* punchAttackMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+		UAnimMontage* kickAttackMontage;
 
 public:	
 	// Called every frame

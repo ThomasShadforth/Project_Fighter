@@ -1,4 +1,4 @@
-Log started at 12/02/2023 15:49:46 (2023-12-02T15:49:46Z)
+Log started at 12/09/2023 14:24:23 (2023-12-09T14:24:23Z)
 Adding event matcher: CompileEventMatcher
 Adding event matcher: LinkEventMatcher
 Adding event matcher: MicrosoftEventMatcher
@@ -6,7 +6,7 @@ Adding event matcher: XoreaxEventMatcher
 No config file at C:\Users\12sha\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 Configuration will be read from:
   C:\Users\12sha\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
-Log file: D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Saved\Logs\UnrealVersionSelector-2023.12.02-15.49.43.log
+Log file: D:\Unreal Projects\Github\Project_Fighter\MoveBurst\Saved\Logs\UnrealVersionSelector-2023.12.09-14.24.22.log
 
     Registering build platform: UnrealBuildTool.AndroidPlatformFactory
 Note: Android toolchain NDK r25b recommended
@@ -5330,6 +5330,9 @@ Compile Env EditorScriptingUtilities: UE_PLUGIN_NAME="EditorScriptingUtilities"
 Enabling plugin 'StylusInput' (referenced via MoveBurst.uproject -> ModelingToolsEditorMode.uplugin)
 Compile Env StylusInput: UE_MODULE_NAME="StylusInput"
 Compile Env StylusInput: UE_PLUGIN_NAME="StylusInput"
+Enabling plugin 'RawInput' (referenced via MoveBurst.uproject)
+Compile Env RawInput: UE_MODULE_NAME="RawInput"
+Compile Env RawInput: UE_PLUGIN_NAME="RawInput"
 Enabling plugin 'Paper2D' (referenced via default plugins)
 Compile Env Paper2D: UE_MODULE_NAME="Paper2D"
 Compile Env Paper2D: UE_PLUGIN_NAME="Paper2D"
@@ -7253,5 +7256,5 @@ WriteFileIfChanged() wrote 2 changed files of 1365 requested writes.
 Timeline:
 
 [ 0.000]
-[ 0.000](+48.342) <unknown>
-[48.342]
+[ 0.000](+9.721) <unknown>
+[ 9.721]

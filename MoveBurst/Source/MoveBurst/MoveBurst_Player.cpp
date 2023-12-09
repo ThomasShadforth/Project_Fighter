@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ // Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "MoveBurst_Player.h"
@@ -16,12 +16,12 @@ AMoveBurst_Player::AMoveBurst_Player() :
 	bCrouching(false),
 	crouchingCapsuleHalfHeight(44.f),
 	standingCapsuleHalfHeight(88.f),
-	normalWalkSpeed(600.f),
-	dashSpeed(900.f),
-	reverseWalkSpeed(300.f),
+	normalWalkSpeed(300.f),
+	dashSpeed(600.f),
 	bFacingRight(true),
 	bInputEnabled(true),
 	bCanAirDash(true),
+	bCanAttack(true),
 	defaultGravityScale(1.2f)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -281,6 +281,61 @@ void AMoveBurst_Player::ReenableGravity()
 	GetCharacterMovement()->GravityScale = defaultGravityScale;
 }
 
+void AMoveBurst_Player::ReceiveAttackInput()
+{
+	if (!bInputEnabled && !bCanAttack) return;
+
+	APlayerController* pController = Cast<APlayerController>(Controller);
+
+	TArray<FEnhancedActionKeyMapping> actionMappings;
+
+	actionMappings = playerDefaultMappingContext->GetMappings();
+
+	if (!pController) return;
+
+	for (auto map : actionMappings) {
+		if (pController->WasInputKeyJustPressed(map.Key)) {
+			UE_LOG(LogTemp, Warning, TEXT("ATTACK INPUT RECEIVED: %s"), *map.Action.GetFName().ToString());
+			PlayAttackMontage(map.Action.GetFName());
+		}
+	}
+
+}
+
+void AMoveBurst_Player::PlayAttackMontage(FName attackName)
+{
+	UAnimInstance* animInstance = GetMesh()->GetAnimInstance();
+
+	TArray<FString> outArray;
+
+	attackName.ToString().ParseIntoArray(outArray, TEXT("r"), true);
+
+	bool bIsAttacking;
+
+	if (animInstance) {
+		if (outArray[1].Contains("Punch") && punchAttackMontage) {
+			animInstance->Montage_Play(punchAttackMontage);
+			animInstance->Montage_JumpToSection(FName(outArray[1]), punchAttackMontage);
+			bIsAttacking = true;
+		}
+		else if (outArray[1].Contains("Kick") && kickAttackMontage) {
+			animInstance->Montage_Play(kickAttackMontage);
+			animInstance->Montage_JumpToSection(FName(outArray[1]), kickAttackMontage);
+			bIsAttacking = true;
+		}
+
+		if (bIsAttacking) {
+			bInputEnabled = false;
+			bCanAttack = false;
+		}
+	}
+}
+
+void AMoveBurst_Player::FinishAttackMontage()
+{
+	bInputEnabled = true;
+}
+
 void AMoveBurst_Player::Landed(const FHitResult& Hit) {
 	Super::Landed(Hit);
 
@@ -316,16 +371,46 @@ void AMoveBurst_Player::Move(const FInputActionValue& Value)
 	}
 }
 
+void AMoveBurst_Player::DirectionalInput(const FInputActionValue& Value)
+{
+	
+	previousInputDirection = currentInputDirection;
+
+	currentInputDirection = Value.Get<FVector2D>();
+	//Invert Y Direction to maintain consistency among checks
+	currentInputDirection.Y *= -1;
+
+	//UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f"), inputDirection.X, inputDirection.Y);
+
+	if ((currentInputDirection.X > .5f && currentInputDirection.Y > .5f) && (previousInputDirection.X <= .49f || previousInputDirection.Y <= .49f)) {
+		UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f, RIGHT DIAGONAL INPUT PRESSED"), currentInputDirection.X, currentInputDirection.Y);
+	}
+	else if ((currentInputDirection.X < -.5f && currentInputDirection.Y > .5f) && (previousInputDirection.X >= -.49f || previousInputDirection.Y <= .49f)) {
+		UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f, LEFT DIAGONAL INPUT PRESSED"), currentInputDirection.X, currentInputDirection.Y);
+	}
+	else if((currentInputDirection.X > .5f && currentInputDirection.Y < .5f) && ((previousInputDirection.X <= .49f || previousInputDirection.X == 0) || previousInputDirection.Y >= .51f)) {
+		UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f, RIGHT HORIZONTAL INPUT PRESSED"), currentInputDirection.X, currentInputDirection.Y);
+	}
+	else if ((currentInputDirection.X < -.5f && currentInputDirection.Y < .5f) && ((previousInputDirection.X >= -.49f || previousInputDirection.X == 0) || previousInputDirection.Y >= .51f)) {
+		UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f, LEFT HORIZONTAL INPUT PRESSED"), currentInputDirection.X, currentInputDirection.Y);
+	}
+	else if (((currentInputDirection.X > -.25f && currentInputDirection.X < .25f) && currentInputDirection.Y > .5f) && (previousInputDirection.Y <= .49f  || (previousInputDirection.X <= -.26f || previousInputDirection.X >= .26f /* || previousInputDirection.X == 0.0f*/))) {
+		UE_LOG(LogTemp, Display, TEXT("X DIRECTION: %f, Y DIRECTION: %f, DOWN INPUT PRESSED"), currentInputDirection.X, currentInputDirection.Y);
+	}
+
+	
+
+}
+
+void AMoveBurst_Player::ResetPreviousDirection() {
+	UE_LOG(LogTemp, Warning, TEXT("PREVIOUS DIRECTION RESET"));
+	previousInputDirection = FVector2D{ 0.0f, 0.0f };
+	currentInputDirection = FVector2D{ 0.0f, 0.0f };
+}
+
 void AMoveBurst_Player::PressLeft() {
 	
 	bLeftDirectionHeld = true;
-	
-	if (bFacingRight) {
-		GetCharacterMovement()->MaxWalkSpeed = reverseWalkSpeed;
-	}
-	else if(!bFacingRight && bDashing) {
-		GetCharacterMovement()->MaxWalkSpeed = normalWalkSpeed;
-	}
 
 	ProcessEnhancedDoubleTap();
 	//ProcessDoubleTap();
@@ -339,14 +424,8 @@ void AMoveBurst_Player::ReleaseLeft()
 
 void AMoveBurst_Player::PressRight() {
 	
+	
 	bRightDirectionHeld = true;
-
-	if (!bFacingRight) {
-		GetCharacterMovement()->MaxWalkSpeed = reverseWalkSpeed;
-	}
-	else if(bFacingRight && bDashing){
-		GetCharacterMovement()->MaxWalkSpeed = normalWalkSpeed;
-	}
 
 	ProcessEnhancedDoubleTap();
 	//ProcessDoubleTap();
@@ -415,7 +494,7 @@ void AMoveBurst_Player::ProcessEnhancedDoubleTap()
 }
 
 void AMoveBurst_Player::ResetSpeed() {
-	UE_LOG(LogTemp, Warning, TEXT("SPEED RESET TO DEFAULT"));
+	
 	GetCharacterMovement()->MaxWalkSpeed = normalWalkSpeed;
 	bDashing = false;
 }
@@ -447,6 +526,18 @@ void AMoveBurst_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 		enhancedInput->BindAction(pressRightAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::PressRight);
 		enhancedInput->BindAction(releaseRightAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReleaseRight);
+
+		enhancedInput->BindAction(lightPunchAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+		enhancedInput->BindAction(mediumPunchAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+		enhancedInput->BindAction(heavyPunchAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+		enhancedInput->BindAction(lightKickAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+		enhancedInput->BindAction(mediumKickAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+		enhancedInput->BindAction(heavyKickAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::ReceiveAttackInput);
+
+		enhancedInput->BindAction(directionalInputAction, ETriggerEvent::Triggered, this, &AMoveBurst_Player::DirectionalInput);
+		enhancedInput->BindAction(directionalInputAction, ETriggerEvent::Completed, this, &AMoveBurst_Player::ResetPreviousDirection);
+
+		
 	}
 	
 }

@@ -5,7 +5,11 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset"
+				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/StarterContent/Particles/P_Ambient_Dust.uasset",
+				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/_Game/Animation/TempPlayer/AnimMontages/KickAttackMontage.uasset",
+				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/_Game/Animation/TempPlayer/AnimMontages/PunchAttackMontage.uasset",
+				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/GameplayElements/Characters/ABP_Player.uasset",
+				"D:/Unreal Projects/Github/Project_Fighter/MoveBurst/Content/Characters/Mannequins/Meshes/SK_Mannequin.uasset"
 			]
 		}
 	]
