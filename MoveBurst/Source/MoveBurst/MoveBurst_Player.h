@@ -6,12 +6,14 @@
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "EnhancedActionKeyMapping.h"
+#include "S_AttackData.h"
+#include "DamageInterface.h"
 #include "MoveBurst_Player.generated.h"
 
 
 
 UCLASS()
-class MOVEBURST_API AMoveBurst_Player : public ACharacter
+class MOVEBURST_API AMoveBurst_Player : public ACharacter, public IDamageInterface
 {
 	GENERATED_BODY()
 
@@ -83,9 +85,22 @@ protected:
 
 	void DirectionalInput(const FInputActionValue& Value);
 
+	bool ContinuedDirectionalInput();
+
+	void AddToCommandString(FString inputToAdd);
+
+	void ResetCommandString();
+
+	//Checks the command input string, determines what name to pass to the attack montage method
+	void CheckCommandString();
+
+	void FinishDirectionalInput();
+
 	void ResetPreviousDirection();
 
 	void MoveForward(float value);
+
+	void FinishMoving();
 
 	void PressLeft();
 
@@ -133,10 +148,38 @@ protected:
 
 	void ReceiveAttackInput();
 
-	void PlayAttackMontage(FName attackName);
+	void GetAttackInputName(FString& outAttackName, FName inputName);
+
+	void PlayAttackMontage(FName attackName, bool specialAttack = false);
 
 	UFUNCTION(BlueprintCallable)
 	void FinishAttackMontage();
+
+	//Move Gauge Methods
+	void ReduceMoveGauge(float reduceRate, float DeltaTime, bool bOverTime, float threshold);
+
+	void IncreaseMoveGauge(float amountIncreased, bool bOverTime, float DeltaTime, float threshold);
+
+	void CheckMoveGauge();
+	
+	bool CheckAttackData(FName AttackString);
+
+	//Overlap methods for each limb hitbox/sphere
+	UFUNCTION()
+		void OnRightArmOverlapStarted(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnLeftArmOverlapStarted(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnRightLegOverlapStarted(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnLeftLegOverlapStarted(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	void HitOpponent(AActor* OtherActor);
+
+	void GainSpecialMeter();
 
 private:
 
@@ -190,6 +233,7 @@ private:
 
 	FTimerHandle crouchReleaseTimer;
 	FTimerHandle dashTapTimer;
+	FTimerHandle commandResetTimer;
 
 	FInputActionKeyMapping lastMovementPressed;
 
@@ -205,6 +249,8 @@ private:
 
 	bool bCanAttack;
 
+	bool bDirectionInputHeld;
+
 	float defaultGravityScale;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Directional Input", meta = (AllowPrivateAccess = "true"))
@@ -214,10 +260,69 @@ private:
 	FVector2D currentInputDirection;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-		UAnimMontage* punchAttackMontage;
+	UAnimMontage* punchAttackMontage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
-		UAnimMontage* kickAttackMontage;
+	UAnimMontage* kickAttackMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	UAnimMontage* specialAttackMontage;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Directional Input", meta = (AllowPrivateAccess = "true"))
+	FString commandString;
+
+	FString lastHeldDirectionalInput;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Directional Input", meta = (AllowPrivateAccess = "true"))
+	TArray<FString> commandInputs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float health;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float maxHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float specialGauge;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float specialGaugeMax;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Move Gauge", meta = (AllowPrivateAccess = "true"))
+	float moveGauge;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Move Gauge", meta = (AllowPrivateAccess = "true"))
+	float moveGaugeMax;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Move Gauge", meta = (AllowPrivateAccess = "true"))
+	float moveMultiplier;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack Data", meta = (AllowPrivateAccess = "true"))
+	TArray<FS_AttackData> attackData;
+
+	bool bIsMoving;
+
+	//Track how much the movegauge has increased or decreased within a given window. Used to determine when the gauge is checked
+	float moveGaugeDecreaseAmount;
+
+	float moveGaugeIncreaseAmount;
+
+	bool bIsRecoveringGauge;
+
+	//To Do: Create a combat component for storing attack data, etc.
+	FS_AttackData* currentAttack;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	class UBoxComponent* rightArmBox;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UBoxComponent* leftArmBox;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UBoxComponent* rightLegBox;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UBoxComponent* leftLegBox;
 
 public:	
 	// Called every frame
@@ -225,5 +330,40 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE float GetHealthPercent() const { return health / maxHealth; }
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE float GetSpecialGaugePercent() const { return specialGauge / specialGaugeMax; }
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE float GetMoveGaugePercent() const { return moveGauge / moveGaugeMax; }
+
+	virtual void OnHit_Implementation(AActor* InstigatingActor, FS_AttackData AttackData) override;
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateRightArmHitBox();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateLeftArmHitBox();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateRightLegHitBox();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateLeftLegHitBox();
+
+	UFUNCTION(BlueprintCallable)
+	void DeactivateRightArm();
+
+	UFUNCTION(BlueprintCallable)
+	void DeactivateLeftArm();
+
+	UFUNCTION(BlueprintCallable)
+	void DeactivateRightLeg();
+
+	UFUNCTION(BlueprintCallable)
+	void DeactivateLeftLeg();
 
 };

@@ -45,6 +45,12 @@
     <Filter Include="Source\MoveBurst">
       <UniqueIdentifier>{076078C9-4C9B-3FD3-A622-721CA8A0FC59}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\MoveBurst\DamageInterface.cpp">
+      <Filter>Source\MoveBurst</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MoveBurst\DamageInterface.h">
+      <Filter>Source\MoveBurst</Filter>
+    </ClInclude>
     <None Include="..\..\Source\MoveBurst\MoveBurst.Build.cs">
       <Filter>Source\MoveBurst</Filter>
     </None>
@@ -76,6 +82,18 @@
       <Filter>Source\MoveBurst</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\MoveBurst\MoveBurst_PlayerAnimInstance.h">
+      <Filter>Source\MoveBurst</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MoveBurst\MoveBurst_PlayerController.cpp">
+      <Filter>Source\MoveBurst</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MoveBurst\MoveBurst_PlayerController.h">
+      <Filter>Source\MoveBurst</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MoveBurst\S_AttackData.cpp">
+      <Filter>Source\MoveBurst</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MoveBurst\S_AttackData.h">
       <Filter>Source\MoveBurst</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,6 +25,10 @@
             "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputtriggers.generated.h",
             "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputaction.generated.h",
             "d:\\program files (x86)\\ue5\\ue_5.1\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\enhancedactionkeymapping.generated.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\s_attackdata.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\s_attackdata.generated.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\damageinterface.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\damageinterface.generated.h",
             "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\moveburst_player.generated.h"
         ],
         "ImportedModules": [],

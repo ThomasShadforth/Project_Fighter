@@ -1,0 +1,17 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\damageinterface.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\movebursteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\development\\moveburst\\definitions.moveburst.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\damageinterface.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\source\\moveburst\\s_attackdata.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\s_attackdata.generated.h",
+            "d:\\unreal projects\\github\\project_fighter\\moveburst\\intermediate\\build\\win64\\unrealeditor\\inc\\moveburst\\uht\\damageinterface.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
